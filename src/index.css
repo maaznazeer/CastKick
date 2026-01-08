@@ -1,0 +1,265 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CastKick Live - Broadcast Quality Design System */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+@layer base {
+  :root {
+    /* Core Dark Theme - Sports Broadcast Aesthetic */
+    --background: 240 10% 4%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Electric Blue Primary */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Dark Secondary */
+    --secondary: 240 10% 12%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 240 10% 15%;
+    --muted-foreground: 240 5% 55%;
+
+    /* Neon Teal Accent */
+    --accent: 166 100% 50%;
+    --accent-foreground: 240 10% 4%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 10% 15%;
+    --input: 240 10% 12%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* Custom Colors */
+    --neon-green: 166 100% 50%;
+    --neon-purple: 280 100% 65%;
+    --neon-pink: 330 100% 65%;
+    --neon-orange: 25 100% 55%;
+    
+    --live-red: 0 90% 55%;
+    --success: 142 76% 45%;
+    --warning: 38 92% 50%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(280 100% 65%));
+    --gradient-accent: linear-gradient(135deg, hsl(166 100% 50%), hsl(180 100% 40%));
+    --gradient-live: linear-gradient(135deg, hsl(0 90% 55%), hsl(330 100% 65%));
+    --gradient-dark: linear-gradient(180deg, hsl(240 10% 6%), hsl(240 10% 2%));
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    --gradient-hero: radial-gradient(ellipse at top, hsl(217 91% 60% / 0.15), transparent 50%);
+
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.3);
+    --shadow-neon: 0 0 20px hsl(166 100% 50% / 0.5);
+    --shadow-live: 0 0 30px hsl(0 90% 55% / 0.5);
+    --shadow-card: 0 4px 30px rgba(0, 0, 0, 0.5);
+    --shadow-elevated: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+
+    /* Sidebar */
+    --sidebar-background: 240 10% 5%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 10% 12%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 10% 12%;
+    --sidebar-ring: 217 91% 60%;
+  }
+
+  .dark {
+    /* Same as root - dark mode by default */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+}
+
+@layer components {
+  /* Glass morphism effect */
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+
+  .glass-strong {
+    @apply bg-white/10 backdrop-blur-2xl border border-white/15;
+  }
+
+  /* Live indicator pulse */
+  .live-pulse {
+    animation: live-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes live-pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 hsl(var(--live-red) / 0.7);
+    }
+    50% {
+      box-shadow: 0 0 0 10px hsl(var(--live-red) / 0);
+    }
+  }
+
+  /* Neon glow effects */
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-accent {
+    box-shadow: var(--shadow-neon);
+  }
+
+  .glow-live {
+    box-shadow: var(--shadow-live);
+  }
+
+  /* Text gradients */
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
+  }
+
+  /* Card styles */
+  .stream-card {
+    @apply glass rounded-xl overflow-hidden transition-all duration-300;
+  }
+
+  .stream-card:hover {
+    @apply border-white/20;
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elevated);
+  }
+
+  /* Stats overlay style */
+  .stats-overlay {
+    @apply glass-strong rounded-lg p-4;
+    background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
+  }
+
+  /* Display font */
+  .font-display {
+    font-family: 'Orbitron', 'Inter', sans-serif;
+  }
+
+  /* Broadcast badge */
+  .badge-live {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider;
+    background: hsl(var(--live-red));
+    box-shadow: var(--shadow-live);
+  }
+
+  .badge-scheduled {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider;
+    background: hsl(var(--warning));
+  }
+
+  /* Player controls */
+  .player-controls {
+    @apply glass-strong rounded-full px-6 py-3 flex items-center gap-4;
+  }
+
+  /* Participant tile */
+  .participant-tile {
+    @apply relative rounded-lg overflow-hidden bg-muted aspect-video;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  .participant-tile.speaking {
+    border-color: hsl(var(--accent));
+    box-shadow: var(--shadow-neon);
+  }
+
+  .participant-tile.active {
+    border-color: hsl(var(--primary));
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Hero section background */
+  .hero-bg {
+    background: var(--gradient-hero);
+  }
+
+  /* Animated gradient border */
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--gradient-primary);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Animation delays */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+}

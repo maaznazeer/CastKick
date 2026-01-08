@@ -1,0 +1,7 @@
+project_id = "topsphdzaqgkugluklwu"
+
+[functions.livekit-token]
+verify_jwt = false
+
+[functions.sports-api]
+verify_jwt = false
