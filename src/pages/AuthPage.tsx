@@ -130,7 +130,7 @@ export default function AuthPage() {
               <Play className="w-5 h-5 text-primary-foreground ml-0.5" fill="currentColor" />
             </div>
             <span className="font-display font-bold text-xl">
-              PRO<span className="text-gradient-primary">SPORTS</span>
+              CAST<span className="text-gradient-primary">KICK</span>
             </span>
           </div>
 

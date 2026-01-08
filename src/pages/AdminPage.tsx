@@ -74,7 +74,7 @@ function AdminSidebar() {
           </div>
           <div>
             <span className="font-display font-bold text-lg block">
-              PRO<span className="text-gradient-primary">SPORTS</span>
+              CAST<span className="text-gradient-primary">KICK</span>
             </span>
             <span className="text-xs text-muted-foreground">Admin Panel</span>
           </div>
